@@ -28,5 +28,7 @@ def help()
 if ( args.length == 3 && new File(args[0]).isFile() && new File(args[1]).isDirectory() )
 {
     contextParser(args[0], args[1], args[2])
+} else {
+    help()
 }
 
