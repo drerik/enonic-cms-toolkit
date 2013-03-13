@@ -1,3 +1,4 @@
+#!/usr/bin/env groovy
 
 /**
  * Created by Erik Sunde ( esu At enonic.com ) March 2013
