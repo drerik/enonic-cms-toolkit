@@ -6,13 +6,10 @@
  */
 
 
-def contextParser( def contextFilename, def cmsHomeDir, def jdbcInitFilename )
+def contextParser( def contextFilename, def cmsHomeDir)
 {
     def context = new XmlParser().parse(new File(contextFilename))
     def resource = context.get("Resource")
-
-    def jdbcInitFile = new File(jdbcInitFilename)
-
 
     println("./upgradetool.sh -a "+resource."@username"[0]+":"+resource."@password"[0] +" -d org.postgresql.Driver -u \""+resource."@url"[0] +"\" -h "+cmsHomeDir+" -o check")
 }
@@ -27,7 +24,7 @@ def help()
 
 if ( args.length == 2 && new File(args[0]).isFile() && new File(args[1]).isDirectory() )
 {
-    contextParser(args[0], args[1], args[2])
+    contextParser(args[0], args[1])
 } else {
     help()
 }
