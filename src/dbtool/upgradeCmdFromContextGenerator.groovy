@@ -25,7 +25,7 @@ def help()
     System.exit(2)
 }
 
-if ( args.length == 3 && new File(args[0]).isFile() && new File(args[1]).isDirectory() )
+if ( args.length == 2 && new File(args[0]).isFile() && new File(args[1]).isDirectory() )
 {
     contextParser(args[0], args[1], args[2])
 } else {
