@@ -13,8 +13,8 @@ def contextParser( def contextFilename, def cmsHomeDir, def jdbcInitFilename )
 
     def jdbcInitFile = new File(jdbcInitFilename)
 
-    jdbcInitFile.write("jdbc add --name database --url \""+resource."@url"[0] +" --user "+resource."@username"[0]+" --password "+resource."@password"[0] +"\n")
-    jdbcInitFile.append("upgrade init --connector database --homeDir "+cmsHomeDir+" --webApp ../webapp/webapp.war\n")
+    jdbcInitFile.write("jdbc add --name database --url \""+resource."@url"[0] +"\" --user "+resource."@username"[0]+" --password "+resource."@password"[0] +"\n")
+    jdbcInitFile.append("upgrade init --connector database --homeDir "+cmsHomeDir+" --webApp ../webapp/cms.war\n")
     jdbcInitFile.append("upgrade check\n")
 }
 
