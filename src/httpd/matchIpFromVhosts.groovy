@@ -6,9 +6,15 @@
  *
  * */
 
+if ( ! args.length == 2)
+{
+    println("Usage: matchIpFromVhosts.groovy <httpd vhost config dir> <ip address>")
+    System.exit(2)
+}
 
-def vhostDir = new File("/etc/apache2/sites-enabled") // apache vhost directory
-def serverIpAddr = "123.123.123.123" //"ip address to check against"
+
+def vhostDir = new File(args[0]) // apache vhost directory
+def serverIpAddr = args[1] //"ip address to check against"
 
 vhostDir.eachFile() {
     def vhostFile = new File(vhostDir,it.name)
