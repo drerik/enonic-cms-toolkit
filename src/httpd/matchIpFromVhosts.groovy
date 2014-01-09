@@ -35,7 +35,7 @@ vhostDir.eachFile() {
             }
             if ( ipaddr.contains(serverIpAddr))
             {
-                println(vhostFile.name +" :  " + dnsName + " -> " + ipaddr)
+                println(vhostFile.name +" :  " + dnsName + " -> " + ipaddr + " " + InetAddress.getByName(dnsName) )
             }
 
         }
