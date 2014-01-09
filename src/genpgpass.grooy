@@ -11,7 +11,7 @@ def genPgpass( def contextFilename)
     def context = new XmlParser().parse(new File(contextFilename))
     def resource = context.get("Resource")
 
-    def pgpassFile = new File("~/pgpass")
+    def pgpassFile = new File( System.getProperty("user.home")+"/.pgpass")
 
     pgpassFile.write("localhost:5432:"+resource."@username"[0]+":"+resource."@username"[0]+":"+resource."@password"[0] +"\n")
 
