@@ -1,0 +1,33 @@
+#!/usr/bin/env groovy
+
+/**
+ * Created by Erik Sunde ( esu At enonic.com ) Januar 2014
+ * Script to generate a cms-shell to configure a jdbc connections, set upgrade parameters and do a 'upgrade check'
+ */
+
+
+def genPgpass( def contextFilename)
+{
+    def context = new XmlParser().parse(new File(contextFilename))
+    def resource = context.get("Resource")
+
+    def pgpassFile = new File("~/pgpass")
+
+    pgpassFile.write("localhost:5432:"+resource."@username"[0]+":"+resource."@username"[0]+":"+resource."@password"[0] +"\n")
+
+}
+
+def help()
+{
+    println("This script creates a .pgpass file from the spesified context.xml file")
+    println("Usage:")
+    println("genpgpass.groovy <context.xml>")
+    System.exit(2)
+}
+
+if ( args.length == 3 && new File(args[0]).isFile() && new File(args[1]).isDirectory() )
+{
+    genPgpass(args[0])
+} else {
+    help()
+}
